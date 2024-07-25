@@ -3,10 +3,10 @@ import styled, { keyframes } from 'styled-components'
 
 const flipAnimation = keyframes`
   from {
-    transform: rotateX(180deg);
+    transform: rotateX(-180deg);
   }
   to {
-    transform: rotateX(360deg);
+    transform: rotateX(-360deg);
   }
 `
 
@@ -28,6 +28,9 @@ const FlipCardInner = styled.div`
 const FlipCardSide = styled.div`
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background-color: aliceblue;
+    padding: 16px;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
 `
 
 interface CharacterDisplayProps {
@@ -36,7 +39,7 @@ interface CharacterDisplayProps {
 
 const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
     return (
-        <FlipCard className="m-16 overflow-hidden font-mono p-2 font-bold text-5xl bg-slate-200">
+        <FlipCard className="m-16 overflow-hidden font-mono p-2 font-bold text-5xl">
             <FlipCardInner>
                 <FlipCardSide>{character}</FlipCardSide>
             </FlipCardInner>
