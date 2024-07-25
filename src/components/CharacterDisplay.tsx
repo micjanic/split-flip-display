@@ -18,19 +18,29 @@ const FlipCardInner = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    animation: ${flipAnimation} 0.4s linear;
-    animation-fill-mode: forwards;
 `
 
-const FlipCardSide = styled.div`
+const FlipCardTop = styled.div`
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     background-color: aliceblue;
     padding: 16px;
-    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    clip-path: inset(0 0 50% 0);
+    transform-style: preserve-3d;
+    animation: ${flipAnimation} 0.4s linear;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+`
+
+const FlipCardBottom = styled.div`
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: aliceblue;
+    padding: 16px;
+    clip-path: inset(50% 0 0 0);
+    transform-style: preserve-3d;
+    animation: ${flipAnimation} 0.4s linear;
+    animation-fill-mode: forwards;
 `
 
 interface CharacterDisplayProps {
@@ -41,7 +51,8 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
     return (
         <FlipCard className="m-16 overflow-hidden font-mono p-2 font-bold text-5xl">
             <FlipCardInner>
-                <FlipCardSide>{character}</FlipCardSide>
+                <FlipCardTop>{character}</FlipCardTop>
+                <FlipCardBottom>{character}</FlipCardBottom>
             </FlipCardInner>
         </FlipCard>
     )
