@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import CharacterDisplay from './CharacterDisplay'
 
 interface SplitFlapDisplayProps {
@@ -6,10 +6,10 @@ interface SplitFlapDisplayProps {
 }
 
 const SplitFlapDisplay: FC<SplitFlapDisplayProps> = ({ message }) => {
-    const letter = message.charAt(0)
+    const character = useMemo(() => message[0], [message])
     return (
         <div className="inline-flex">
-            <CharacterDisplay character={letter} />
+            <CharacterDisplay character={character} />
         </div>
     )
 }
