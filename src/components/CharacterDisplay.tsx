@@ -32,6 +32,10 @@ const FlapDisplay = css`
     animation-duration: ${flipAnimationSpeed}ms;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const FlapDisplayTop = styled.div`
@@ -49,6 +53,10 @@ const FlapDisplayBottom = styled.div`
 `
 
 const ClippedCardTop = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 2;
     background-color: aliceblue;
     position: absolute;
@@ -58,6 +66,10 @@ const ClippedCardTop = styled.div`
 `
 
 const ClippedCardBottom = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
     background-color: aliceblue;
     position: absolute;
@@ -66,9 +78,12 @@ const ClippedCardBottom = styled.div`
     clip-path: inset(50% 0 0 0);
 `
 
-const StaticCard = styled.div`
+const StaticDisplay = styled.div`
     background-color: aliceblue;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 interface CharacterDisplayProps {
@@ -76,9 +91,9 @@ interface CharacterDisplayProps {
 }
 
 const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
-    const [curCharacter, setCurCharacter] = useState<string>(' ')
-    const [prevCharacter, setPrevCharacter] = useState<string>(' ')
-    const [characterCode, setCharacterCode] = useState<number>(32)
+    const [curCharacter, setCurCharacter] = useState<string>('')
+    const [prevCharacter, setPrevCharacter] = useState<string>('')
+    const [characterCode, setCharacterCode] = useState<number>(26)
 
     const cycleCharacters = () => {
         const char = character?.toUpperCase()
@@ -94,17 +109,19 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
     }, [character])
 
     return (
-        <div className="m-16 overflow-hidden font-mono font-bold text-5xl">
+        <div
+            className="font-mono font-bold text-5xl w-24 h-20"
+            style={{ perspective: '100px' }}
+        >
             {curCharacter === prevCharacter ? (
-                <StaticCard>{curCharacter}</StaticCard>
+                <StaticDisplay>{curCharacter}</StaticDisplay>
             ) : (
-                <div className="relative" style={{ perspective: '100px' }}>
-                    <div className="text-transparent">{curCharacter}</div>
+                <>
                     <FlapDisplayTop>{prevCharacter}</FlapDisplayTop>
                     <FlapDisplayBottom>{curCharacter}</FlapDisplayBottom>
                     <ClippedCardTop>{curCharacter}</ClippedCardTop>
                     <ClippedCardBottom>{prevCharacter}</ClippedCardBottom>
-                </div>
+                </>
             )}
         </div>
     )

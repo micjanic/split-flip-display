@@ -7,11 +7,7 @@ interface SplitFlapDisplayProps {
 
 const SplitFlapDisplay: FC<SplitFlapDisplayProps> = ({ message }) => {
     const character = useMemo(() => message[0], [message])
-    return (
-        <div className="inline-flex">
-            <CharacterDisplay character={character} />
-        </div>
-    )
+    return <CharacterDisplay character={character} />
 }
 
 export default SplitFlapDisplay
