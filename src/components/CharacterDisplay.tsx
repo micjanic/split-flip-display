@@ -1,28 +1,32 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-const flipAnimationSpeed: number = 1000
+const flipAnimationSpeed: number = 300
 
 const flipAnimationBottom = keyframes`
   from {
     transform: rotateX(-180deg);
+    background-color: #d6d8ff;
   }
   to {
     transform: rotateX(-360deg);
+    background-color: #27314b;
   }
 `
 
 const flipAnimationTop = keyframes`
   from {
     transform: rotateX(0deg);
+    background-color: #27314b;
   }
   to {
     transform: rotateX(-180deg);
+    background-color: #000000;
   }
 `
 
 const FlapStyles = css`
-    background-color: #2e2e2e;
+    background-color: #27314b;
     color: white;
     padding: 12px;
     border-radius: 5px;
@@ -40,6 +44,7 @@ const FlapAnimationStyles = css`
     position: absolute;
     top: 0;
     left: 0;
+    transition: all;
     transform-style: preserve-3d;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
@@ -112,20 +117,22 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
         }, flipAnimationSpeed)
     }
 
+    const prevChar = useMemo(
+        () => (prevCharacter === ' ' ? <>&nbsp;</> : prevCharacter),
+        [prevCharacter]
+    )
+
+    const curChar = useMemo(
+        () => (curCharacter === ' ' ? <>&nbsp;</> : curCharacter),
+        [curCharacter]
+    )
+
     const flapCharacter = (
         <>
-            <FlapDisplayTop>
-                {prevCharacter === ' ' ? <>&nbsp;</> : prevCharacter}
-            </FlapDisplayTop>
-            <FlapDisplayBottom>
-                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
-            </FlapDisplayBottom>
-            <ClippedCardTop>
-                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
-            </ClippedCardTop>
-            <ClippedCardBottom>
-                {prevCharacter === ' ' ? <>&nbsp;</> : prevCharacter}
-            </ClippedCardBottom>
+            <FlapDisplayTop>{prevChar}</FlapDisplayTop>
+            <FlapDisplayBottom>{curChar}</FlapDisplayBottom>
+            <ClippedCardTop>{curChar}</ClippedCardTop>
+            <ClippedCardBottom>{prevChar}</ClippedCardBottom>
         </>
     )
 
@@ -139,9 +146,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
-            <StaticDisplay>
-                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
-            </StaticDisplay>
+            <StaticDisplay>{curChar}</StaticDisplay>
         </div>
     )
 }
