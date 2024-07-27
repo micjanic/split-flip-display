@@ -22,8 +22,8 @@ const flipAnimationTop = keyframes`
 `
 
 const FlapDisplay = css`
-    background-color: aliceblue;
     position: absolute;
+    background-color: aliceblue;
     top: 0;
     left: 0;
     transform-style: preserve-3d;
@@ -32,7 +32,6 @@ const FlapDisplay = css`
     animation-duration: ${flipAnimationSpeed}ms;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,34 +52,27 @@ const FlapDisplayBottom = styled.div`
 `
 
 const ClippedCardTop = styled.div`
-    width: 100%;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
     background-color: aliceblue;
-    position: absolute;
-    top: 0;
-    left: 0;
     clip-path: inset(0 0 50% 0);
 `
 
 const ClippedCardBottom = styled.div`
-    width: 100%;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     background-color: aliceblue;
-    position: absolute;
-    top: 0;
-    left: 0;
     clip-path: inset(50% 0 0 0);
 `
 
 const StaticDisplay = styled.div`
     background-color: aliceblue;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,9 +82,9 @@ interface CharacterDisplayProps {
     character: string
 }
 
-const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
+const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
     const [curCharacter, setCurCharacter] = useState<string>('')
-    const [prevCharacter, setPrevCharacter] = useState<string>('')
+    const [prevCharacter, setPrevCharacter] = useState<string>(' ')
     const [characterCode, setCharacterCode] = useState<number>(26)
 
     const cycleCharacters = () => {
@@ -104,25 +96,36 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character }) => {
         }, flipAnimationSpeed)
     }
 
+    const flapCharacter = (
+        <>
+            <FlapDisplayTop>
+                {prevCharacter === ' ' ? <>&nbsp;</> : prevCharacter}
+            </FlapDisplayTop>
+            <FlapDisplayBottom>
+                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
+            </FlapDisplayBottom>
+            <ClippedCardTop>
+                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
+            </ClippedCardTop>
+            <ClippedCardBottom>
+                {prevCharacter === ' ' ? <>&nbsp;</> : prevCharacter}
+            </ClippedCardBottom>
+        </>
+    )
+
     useEffect(() => {
         cycleCharacters()
     }, [character])
 
     return (
         <div
-            className="font-mono font-bold text-5xl w-24 h-20"
+            className="inline-block relative font-mono font-bold text-3xl"
             style={{ perspective: '100px' }}
         >
-            {curCharacter === prevCharacter ? (
-                <StaticDisplay>{curCharacter}</StaticDisplay>
-            ) : (
-                <>
-                    <FlapDisplayTop>{prevCharacter}</FlapDisplayTop>
-                    <FlapDisplayBottom>{curCharacter}</FlapDisplayBottom>
-                    <ClippedCardTop>{curCharacter}</ClippedCardTop>
-                    <ClippedCardBottom>{prevCharacter}</ClippedCardBottom>
-                </>
-            )}
+            {curCharacter !== prevCharacter && flapCharacter}
+            <StaticDisplay>
+                {curCharacter === ' ' ? <>&nbsp;</> : curCharacter}
+            </StaticDisplay>
         </div>
     )
 }
