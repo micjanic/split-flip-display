@@ -21,9 +21,23 @@ const flipAnimationTop = keyframes`
   }
 `
 
-const FlapDisplay = css`
+const FlapStyles = css`
+    background-color: #2e2e2e;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: 2px;
+        border-bottom: white 2px solid;
+    }
+`
+
+const FlapAnimationStyles = css`
     position: absolute;
-    background-color: aliceblue;
     top: 0;
     left: 0;
     transform-style: preserve-3d;
@@ -41,14 +55,16 @@ const FlapDisplayTop = styled.div`
     z-index: 4;
     clip-path: inset(0 0 50% 0);
     animation: ${flipAnimationTop};
-    ${FlapDisplay}
+    ${FlapAnimationStyles}
+    ${FlapStyles}
 `
 
 const FlapDisplayBottom = styled.div`
     z-index: 3;
     clip-path: inset(50% 0 0 0);
     animation: ${flipAnimationBottom};
-    ${FlapDisplay}
+    ${FlapAnimationStyles}
+    ${FlapStyles}
 `
 
 const ClippedCardTop = styled.div`
@@ -57,8 +73,8 @@ const ClippedCardTop = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 2;
-    background-color: aliceblue;
     clip-path: inset(0 0 50% 0);
+    ${FlapStyles}
 `
 
 const ClippedCardBottom = styled.div`
@@ -67,15 +83,15 @@ const ClippedCardBottom = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 1;
-    background-color: aliceblue;
     clip-path: inset(50% 0 0 0);
+    ${FlapStyles}
 `
 
 const StaticDisplay = styled.div`
-    background-color: aliceblue;
     display: flex;
     justify-content: center;
     align-items: center;
+    ${FlapStyles}
 `
 
 interface CharacterDisplayProps {
@@ -119,8 +135,8 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-bold text-3xl"
-            style={{ perspective: '100px' }}
+            className="inline-block relative font-mono font-bold text-8xl"
+            style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
             <StaticDisplay>
