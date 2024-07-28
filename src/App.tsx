@@ -7,17 +7,6 @@ function App() {
     return (
         <div>
             <SplitFlapDisplay message={message} />
-            <input
-                className="py-2 text-center border-solid border-black border-2 rounded-lg"
-                maxLength={1}
-                onInput={({ target }) => {
-                    setMessage(target?.value?.toUpperCase())
-                }}
-                value={message}
-                type="text"
-                size={1}
-                spellCheck={false}
-            />
         </div>
     )
 }

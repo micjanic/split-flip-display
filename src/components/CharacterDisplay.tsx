@@ -1,7 +1,10 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-const flipAnimationSpeed: number = 120
+const flipAnimationSpeed: number = 100
+const backgroundColor = css`
+    background-color: #6e7681;
+`
 
 const flipAnimationBottom = keyframes`
   from {
@@ -10,14 +13,14 @@ const flipAnimationBottom = keyframes`
   }
   to {
     transform: rotateX(-360deg);
-    background-color: #27314b;
+    ${backgroundColor}
   }
 `
 
 const flipAnimationTop = keyframes`
   from {
     transform: rotateX(0deg);
-    background-color: #27314b;
+    ${backgroundColor}
   }
   to {
     transform: rotateX(-180deg);
@@ -26,18 +29,20 @@ const flipAnimationTop = keyframes`
 `
 
 const FlapStyles = css`
-    background-color: #27314b;
-    color: white;
-    padding: 12px;
+    color: #e2e2e2;
+    padding: 12px 4px;
     border-radius: 10px;
+    border: 2px solid black;
     &::before {
         content: '';
         position: absolute;
-        width: 100%;
+        width: calc(100% - 10px);
         height: 50%;
         top: 2px;
-        border-bottom: white 1px solid;
+        border-bottom: #00000099 2px solid;
     }
+    margin: 2px;
+    ${backgroundColor}
 `
 
 const FlapAnimationStyles = css`
@@ -146,7 +151,6 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
                 if (timeoutRef.current) {
                     timeoutRef.current = null
-                    clearTimeout(timeoutRef.current)
                 }
             }, flipAnimationSpeed)
         }
@@ -161,7 +165,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-bold text-8xl"
+            className="inline-block relative font-mono font-bold text-9xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
