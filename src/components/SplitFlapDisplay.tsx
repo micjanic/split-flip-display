@@ -7,7 +7,13 @@ interface SplitFlapDisplayProps {
 
 const SplitFlapDisplay: FC<SplitFlapDisplayProps> = ({ message }) => {
     const character = useMemo(() => message[0], [message])
-    return <CharacterDisplay character={character} />
+
+    return (
+        <div>
+            <CharacterDisplay character={character} />
+            <CharacterDisplay character={character} />
+        </div>
+    )
 }
 
 export default SplitFlapDisplay
