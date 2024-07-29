@@ -77,7 +77,12 @@ const SplitFlapDisplay: FC = () => {
     return (
         <div className="inline-flex flex-col justify-center items-center w-full">
             <div>
-                <div className="inline-grid grid-cols-[repeat(16,_minmax(0,_1fr))] sm:gap-1 mb-8 md:mb-24 p-1 sm:p-6 md:p-12">
+                <div
+                    className="inline-grid sm:gap-1 mb-8 md:mb-24 p-1 sm:p-6 md:p-12"
+                    style={{
+                        gridTemplateColumns: 'repeat(16, minmax(0, 1fr))',
+                    }}
+                >
                     {characterDisplays}
                 </div>
             </div>
@@ -112,7 +117,13 @@ const SplitFlapDisplay: FC = () => {
                                 </svg>
                             </div>
                         </button>
-                        <div className="inline-grid grid-cols-[repeat(16,_minmax(0,_1fr))] gap-1">
+                        <div
+                            className="inline-grid grid-col-12 gap-1"
+                            style={{
+                                gridTemplateColumns:
+                                    'repeat(16, minmax(0, 1fr))',
+                            }}
+                        >
                             {characterInputs}
                         </div>
                     </div>
