@@ -8,7 +8,7 @@ const SplitFlapDisplay: FC = () => {
 
     const characterDisplays = [...Array(inputCount)].map((_, i) => (
         <CharacterDisplay
-            key={`character-display-${i}-${message[i]}`}
+            key={`character-display-${i}`}
             character={message[i]}
         />
     ))
@@ -24,7 +24,11 @@ const SplitFlapDisplay: FC = () => {
 
             const previousInputElement: HTMLInputElement | null =
                 document.querySelector(`.character-input-${i - 1}`)
-            if (previousInputElement) previousInputElement?.focus()
+            if (previousInputElement) {
+                setTimeout(() => {
+                    previousInputElement?.select()
+                }, 0)
+            }
         } else if (e.key.length === 1) {
             setInputValues((prev) => {
                 const value = e.key
@@ -35,7 +39,11 @@ const SplitFlapDisplay: FC = () => {
 
             const nextInputElement: HTMLInputElement | null =
                 document.querySelector(`.character-input-${i + 1}`)
-            if (nextInputElement) nextInputElement?.focus()
+            if (nextInputElement) {
+                setTimeout(() => {
+                    nextInputElement?.select()
+                }, 0)
+            }
         }
     }
 
@@ -53,22 +61,6 @@ const SplitFlapDisplay: FC = () => {
                 onKeyDown={(event) => {
                     handleKeyDown(event, i)
                 }}
-                // onKeyDown={({ target }) => {
-                //     if ((target as HTMLInputElement).value === '') {
-                //         const previousInputElement: HTMLInputElement | null =
-                //             document.querySelector(`.character-input-${i - 1}`)
-                //         if (previousInputElement) previousInputElement?.focus()
-                //     }
-                // }}
-                // onInput={(e) => {
-                //     const value = (e.target as HTMLInputElement).value
-
-                //     setInputValues((prev) => {
-                //         const nextPrev = [...prev]
-                //         nextPrev[i] = value.toUpperCase()
-                //         return nextPrev
-                //     })
-                // }}
                 type="text"
                 size={1}
                 spellCheck={false}
