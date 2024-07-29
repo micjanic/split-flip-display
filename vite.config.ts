@@ -42,9 +42,15 @@ export default defineConfig({
     plugins: [
         react(),
         postcss({
-            extract: true,
-            modules: true,
-            use: ['sass'],
+            config: {
+                path: './postcss.config.js',
+                ctx: undefined,
+            },
+            extensions: ['.css'],
+            minimize: true,
+            inject: {
+                insertAt: 'top',
+            },
         }),
     ],
 })
