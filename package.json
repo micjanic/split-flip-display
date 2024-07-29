@@ -13,7 +13,6 @@
     "keywords": [],
     "files": [
         "dist",
-        "src/components/images",
         "README.md"
     ],
     "main": "./dist/split-flap-display.umd.js",
@@ -56,7 +55,7 @@
         "autoprefixer": "^10.4.19",
         "eslint": "^8.45.0",
         "pixi.js": "7.4.2",
-        "postcss": "^8.4.38",
+        "postcss": "^8.4.40",
         "prettier": "^3.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -86,6 +85,7 @@
         }
     },
     "dependencies": {
+        "postcss-cli": "^11.0.0",
         "styled-components": "^6.1.12"
     }
 }

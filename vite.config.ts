@@ -1,6 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import postcss from 'rollup-plugin-postcss'
 
 export default defineConfig({
     server: {
@@ -38,5 +39,12 @@ export default defineConfig({
         outDir: 'dist',
         sourcemap: true,
     },
-    plugins: [react()],
+    plugins: [
+        react(),
+        postcss({
+            extract: true,
+            modules: true,
+            use: ['sass'],
+        }),
+    ],
 })
