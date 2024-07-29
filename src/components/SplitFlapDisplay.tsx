@@ -4,7 +4,7 @@ import CharacterDisplay from './CharacterDisplay'
 const SplitFlapDisplay: FC = () => {
     const [message, setMessage] = useState<string[]>([])
     const [inputValues, setInputValues] = useState<string[]>([])
-    const [inputCount, _] = useState<number>(36)
+    const [inputCount, _] = useState<number>(48)
 
     const characterDisplays = [...Array(inputCount)].map((_, i) => (
         <CharacterDisplay
@@ -74,7 +74,7 @@ const SplitFlapDisplay: FC = () => {
     return (
         <div className="inline-flex flex-col justify-center items-center w-full">
             <div>
-                <div className="inline-grid grid-cols-12 gap-1 mb-8 md:mb-24 p-1 sm:p-6 md:p-12">
+                <div className="inline-grid grid-cols-[repeat(16,_minmax(0,_1fr))] sm:gap-1 mb-8 md:mb-24 p-1 sm:p-6 md:p-12">
                     {characterDisplays}
                 </div>
             </div>
@@ -88,7 +88,7 @@ const SplitFlapDisplay: FC = () => {
                 >
                     <div className="flex flex-col justify-center items-center">
                         <button
-                            className="flex mb-4 justify-center items-center font-mono gap-3 border-solid border-2 border-black py-4 px-12 rounded-md text-[18px] font-semibold"
+                            className="flex mb-4 justify-center items-center font-mono gap-3 border-solid border-2 border-black py-4 px-12 rounded-md text-[18px] font-semibold active:translate-y-1 transition-all"
                             type="submit"
                         >
                             <span>SEND MESSAGE</span>
@@ -109,7 +109,7 @@ const SplitFlapDisplay: FC = () => {
                                 </svg>
                             </div>
                         </button>
-                        <div className="inline-grid grid-cols-12 gap-1">
+                        <div className="inline-grid grid-cols-[repeat(16,_minmax(0,_1fr))] gap-1">
                             {characterInputs}
                         </div>
                     </div>

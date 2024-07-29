@@ -1,7 +1,7 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-const flipAnimationSpeed: number = 120
+const flipAnimationSpeed: number = 70
 const backgroundColor = css`
     background-image: linear-gradient(#18181a, #3c3d41);
 `
@@ -32,13 +32,13 @@ const FlapStyles = css`
     color: #ffffff;
     padding: 12px 4px;
     border-radius: 4px;
-    border: 1px solid #344663;
-    border-top: 1px solid white;
+    border: 1px solid #000000;
+    border-top: 1px solid #666666;
     border-bottom: 1px solid #000000;
     &::before {
         content: '';
         position: absolute;
-        width: calc(100% - 8px);
+        width: calc(100% - 4px);
         height: 50%;
         top: 1px;
         border-bottom: #1d1d1d 2px solid;
@@ -46,10 +46,10 @@ const FlapStyles = css`
     &::after {
         content: '';
         position: absolute;
-        width: calc(100% - 8px);
+        width: calc(100% - 4px);
         height: 50%;
         top: 2px;
-        border-bottom: #ffffff 1px solid;
+        border-bottom: #ffffff49 1px solid;
     }
 
     ${backgroundColor}
@@ -113,7 +113,7 @@ const StaticDisplay = styled.div`
 const charList:string[] = [
     ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    '.', ',', ':', "'", '"', '?', '!', '@', '#', '$', '&', '(', ')', '-', '_', '+', '=', '[', ']', '{', '}', '|', '\\', '/', '*'
+    ',', '.', ':', '?', '!', '+','-','/','=','$','%','(',')'
   ]
 
 interface CharacterDisplayProps {
@@ -175,7 +175,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono md:font-bold text-4xl sm:text-7xl md:text-8xl lg:text-9xl"
+            className="inline-block relative font-mono font-thin md:font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
