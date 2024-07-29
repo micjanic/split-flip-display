@@ -1,19 +1,19 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-const flipAnimationSpeed: number = 100
+const flipAnimationSpeed: number = 120
 const backgroundColor = css`
-    background-image: linear-gradient(#35383f, #565968);
+    background-image: linear-gradient(#18181a, #3c3d41);
 `
 
 const flipAnimationBottom = keyframes`
   from {
     transform: rotateX(-180deg);
-    background-color: #d6d8ff;
+    background-image: linear-gradient(#18181a, #3c3d41);
   }
   to {
     transform: rotateX(-360deg);
-    ${backgroundColor}
+    background-image: linear-gradient(#ffffff, #252629);
   }
 `
 
@@ -24,7 +24,7 @@ const flipAnimationTop = keyframes`
   }
   to {
     transform: rotateX(-180deg);
-    background-color: #000000;
+    background-color: #ffffff;
   }
 `
 
@@ -32,15 +32,16 @@ const FlapStyles = css`
     color: #ffffff;
     padding: 12px 4px;
     border-radius: 4px;
-    border: 2px solid #344663;
-    border-top: 2px solid white;
+    border: 1px solid #344663;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #000000;
     &::before {
         content: '';
         position: absolute;
         width: calc(100% - 8px);
         height: 50%;
         top: 1px;
-        border-bottom: #1d1d1d 1px solid;
+        border-bottom: #1d1d1d 2px solid;
     }
     &::after {
         content: '';
@@ -48,9 +49,9 @@ const FlapStyles = css`
         width: calc(100% - 8px);
         height: 50%;
         top: 2px;
-        border-bottom: #b4b4b4 1px solid;
+        border-bottom: #ffffff 1px solid;
     }
-    margin: 2px;
+
     ${backgroundColor}
 `
 
@@ -174,7 +175,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-bold text-9xl"
+            className="inline-block relative font-mono md:font-bold text-4xl sm:text-7xl md:text-8xl lg:text-9xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
