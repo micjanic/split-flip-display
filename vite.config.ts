@@ -13,7 +13,7 @@ export default defineConfig({
         lib: {
             entry: path.resolve(
                 __dirname,
-                'src/components/split-flap-display.tsx'
+                'src/components/splitFlapDisplay.tsx'
             ),
             name: '@micjanic/split-flap-display',
             fileName: (format) => `split-flap-display.${format}.js`,
