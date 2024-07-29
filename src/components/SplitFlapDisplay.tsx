@@ -13,7 +13,10 @@ const SplitFlapDisplay: FC = () => {
         />
     ))
 
-    const handleKeyDown = (e: KeyboardEvent, i: number) => {
+    const handleKeyDown = (
+        e: React.KeyboardEvent<HTMLInputElement>,
+        i: number
+    ) => {
         //goin backwards
         if (e.key === 'Backspace') {
             setInputValues((prev) => {
