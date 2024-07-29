@@ -3,7 +3,7 @@ import styled, { css, keyframes } from 'styled-components'
 
 const flipAnimationSpeed: number = 100
 const backgroundColor = css`
-    background-color: #6e7681;
+    background-image: linear-gradient(#2e2e2e, #777777);
 `
 
 const flipAnimationBottom = keyframes`
@@ -29,17 +29,18 @@ const flipAnimationTop = keyframes`
 `
 
 const FlapStyles = css`
-    color: #e2e2e2;
+    color: #ffffff;
     padding: 12px 4px;
-    border-radius: 10px;
-    border: 2px solid black;
+    border-radius: 4px;
+    border: 2px solid #344663;
+    border-top: 2px solid white;
     &::before {
         content: '';
         position: absolute;
         width: calc(100% - 10px);
         height: 50%;
         top: 2px;
-        border-bottom: #00000099 2px solid;
+        border-bottom: #464646 2px solid;
     }
     margin: 2px;
     ${backgroundColor}

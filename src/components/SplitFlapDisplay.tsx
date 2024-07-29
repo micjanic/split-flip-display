@@ -13,18 +13,62 @@ const SplitFlapDisplay: FC = () => {
         />
     ))
 
+    const handleKeyDown = (e, i) => {
+        if (e.key === 'Backspace') {
+            setInputValues((prev) => {
+                const value = ''
+                const nextPrev = [...prev]
+                nextPrev[i] = value.toUpperCase()
+                return nextPrev
+            })
+
+            const previousInputElement: HTMLInputElement | null =
+                document.querySelector(`.character-input-${i - 1}`)
+            if (previousInputElement) previousInputElement?.focus()
+        } else if (e.key.length === 1) {
+            setInputValues((prev) => {
+                const value = e.key
+                const nextPrev = [...prev]
+                nextPrev[i] = value.toUpperCase()
+                return nextPrev
+            })
+
+            const nextInputElement: HTMLInputElement | null =
+                document.querySelector(`.character-input-${i + 1}`)
+            if (nextInputElement) nextInputElement?.focus()
+        }
+    }
+
     const characterInputs = [...Array(inputCount)].map((_, i) => (
         <div key={`character-input-${i}`}>
             <input
-                className="py-2 text-center border-solid border-black border-2 rounded-lg"
+                className={`${`character-input-${i}`} py-2 text-center border-solid border-black border-2 rounded-lg`}
                 maxLength={1}
-                onInput={({ target }) => {
-                    setInputValues((prev) => {
-                        const nextPrev = [...prev]
-                        nextPrev[i] = target?.value?.toUpperCase()
-                        return nextPrev
-                    })
+                onFocus={({ target }) => {
+                    target.select()
                 }}
+                onChange={(e) => {
+                    e.preventDefault()
+                }}
+                onKeyDown={(event) => {
+                    handleKeyDown(event, i)
+                }}
+                // onKeyDown={({ target }) => {
+                //     if ((target as HTMLInputElement).value === '') {
+                //         const previousInputElement: HTMLInputElement | null =
+                //             document.querySelector(`.character-input-${i - 1}`)
+                //         if (previousInputElement) previousInputElement?.focus()
+                //     }
+                // }}
+                // onInput={(e) => {
+                //     const value = (e.target as HTMLInputElement).value
+
+                //     setInputValues((prev) => {
+                //         const nextPrev = [...prev]
+                //         nextPrev[i] = value.toUpperCase()
+                //         return nextPrev
+                //     })
+                // }}
                 type="text"
                 size={1}
                 spellCheck={false}
