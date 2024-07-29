@@ -1,6 +1,6 @@
 {
     "name": "@micjanic/split-flap-display",
-    "version": "1.0.34",
+    "version": "1.0.35",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -86,6 +86,7 @@
     },
     "dependencies": {
         "postcss-cli": "^11.0.0",
+        "rollup-plugin-postcss": "^4.0.2",
         "styled-components": "^6.1.12"
     }
 }
