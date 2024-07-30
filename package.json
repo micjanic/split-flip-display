@@ -1,6 +1,6 @@
 {
     "name": "@micjanic/split-flap-display",
-    "version": "1.0.92",
+    "version": "1.0.93",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -17,6 +17,7 @@
     ],
     "main": "./dist/split-flap-display.umd.js",
     "module": "./dist/split-flap-display.es.js",
+    "style": "dist/index.css",
     "exports": {
         ".": {
             "import": "./dist/split-flap-display.es.js",
