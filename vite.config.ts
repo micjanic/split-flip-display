@@ -1,7 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import postcss from 'rollup-plugin-postcss'
+import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
     server: {
@@ -39,18 +39,10 @@ export default defineConfig({
         outDir: 'dist',
         sourcemap: true,
     },
-    plugins: [
-        react(),
-        postcss({
-            config: {
-                path: './postcss.config.js',
-                ctx: undefined,
-            },
-            extensions: ['.css'],
-            minimize: true,
-            inject: {
-                insertAt: 'top',
-            },
-        }),
-    ],
+    plugins: [react()],
+    css: {
+        postcss: {
+            plugins: [tailwindcss()],
+        },
+    },
 })
