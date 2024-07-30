@@ -1,6 +1,6 @@
 {
     "name": "@micjanic/split-flap-display",
-    "version": "1.0.70",
+    "version": "1.0.71",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -39,7 +39,7 @@
         "dev": "vite",
         "prebuild": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(release): bump version to %s\" && git push",
         "build-tailwind": "npx tailwindcss -i ./src/index.css -o ./dist/globals.css --postcss --minify",
-        "build": "npm run prebuild && build-tailwind && tsc && vite build",
+        "build": "npm run prebuild && npm run build-tailwind && tsc && vite build",
         "publish": "npm run build && npm publish",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
