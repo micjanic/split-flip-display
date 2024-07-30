@@ -41,8 +41,6 @@ export default defineConfig({
     },
     plugins: [react()],
     css: {
-        postcss: {
-            plugins: [tailwindcss()],
-        },
+        postcss: './postcss.config.js',
     },
 })

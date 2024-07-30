@@ -38,6 +38,7 @@
     "scripts": {
         "dev": "vite",
         "prebuild": "npm version patch --no-git-tag-version && git add package.json && git commit -m \"chore(release): bump version to %s\" && git push",
+        "build-tailwind": "npx tailwindcss -i ./src/index.css -o ./dist/globals.css --postcss --minify",
         "build": "npm run prebuild && tsc && vite build",
         "publish": "npm run build && npm publish",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
