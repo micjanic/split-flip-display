@@ -1,6 +1,6 @@
 {
     "name": "@micjanic/split-flap-display",
-    "version": "1.0.101",
+    "version": "1.0.102",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -13,7 +13,8 @@
     "keywords": [],
     "files": [
         "dist",
-        "README.md"
+        "README.md",
+        "style.css"
     ],
     "main": "./dist/split-flap-display.umd.js",
     "module": "./dist/split-flap-display.es.js",
