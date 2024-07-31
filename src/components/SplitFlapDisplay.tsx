@@ -1,10 +1,14 @@
 import { FC, useState } from 'react'
 import CharacterDisplay from './CharacterDisplay'
 
+//prettier-ignore
+const defaultInputValues = ['T','H','I','S',' ','I','S',' ','A',' ','T','E','S','T',' ',' ','M','E','S','S','A','G','E',' ',':',')',
+]
+
 const SplitFlapDisplay: FC = () => {
     const [message, setMessage] = useState<string[]>([])
-    const [inputValues, setInputValues] = useState<string[]>([])
-    const [inputCount, _] = useState<number>(48)
+    const [inputValues, setInputValues] = useState<string[]>(defaultInputValues)
+    const [inputCount, _] = useState<number>(64)
 
     const characterDisplays = [...Array(inputCount)].map((_, i) => (
         <CharacterDisplay
@@ -17,8 +21,9 @@ const SplitFlapDisplay: FC = () => {
         e: React.KeyboardEvent<HTMLInputElement>,
         i: number
     ) => {
-        //goin backwards
         if (e.key === 'Backspace') {
+            //goin backwards
+
             setInputValues((prev) => {
                 const value = ''
                 const nextPrev = [...prev]
@@ -32,9 +37,9 @@ const SplitFlapDisplay: FC = () => {
             setTimeout(() => {
                 previousInputElement?.select()
             }, 0)
-
-            //goin forwards
         } else if (e.key.length === 1) {
+            //goin forwards
+
             setInputValues((prev) => {
                 const value = e.key
                 const nextPrev = [...prev]
@@ -96,7 +101,7 @@ const SplitFlapDisplay: FC = () => {
                 >
                     <div className="flex flex-col justify-center items-center">
                         <button
-                            className="flex mb-4 justify-center items-center font-mono gap-3 border-solid border-2 border-black py-4 px-12 rounded-md text-[18px] font-semibold active:translate-y-1 transition-all"
+                            className="flex mb-4 justify-center items-center font-mono gap-3 border-solid border-2 border-black py-4 px-12 rounded-md text-[18px] font-semibold active:translate-y-1 transition-all bg-white"
                             type="submit"
                         >
                             <span>SEND MESSAGE</span>
