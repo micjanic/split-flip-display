@@ -2,13 +2,12 @@ import { FC, useState } from 'react'
 import CharacterDisplay from './CharacterDisplay'
 
 //prettier-ignore
-const defaultInputValues = ['T','H','I','S',' ','I','S',' ','A',' ','T','E','S','T',' ',' ','M','E','S','S','A','G','E',' ',':',')',
-]
+const defaultInputValues = ['H','E','L','L','O',',',' ','T','H','I','S',' ','I','S',' ','A','T','E','S','T',' ','M','E','S','S','A','G','E', '!']
 
 const SplitFlapDisplay: FC = () => {
     const [message, setMessage] = useState<string[]>([])
     const [inputValues, setInputValues] = useState<string[]>(defaultInputValues)
-    const [inputCount, _] = useState<number>(64)
+    const [inputCount, _] = useState<number>(48)
 
     const characterDisplays = [...Array(inputCount)].map((_, i) => (
         <CharacterDisplay
@@ -83,7 +82,7 @@ const SplitFlapDisplay: FC = () => {
         <div className="inline-flex flex-col justify-center items-center w-full">
             <div>
                 <div
-                    className="inline-grid sm:gap-1 mb-8 md:mb-24 p-1 sm:p-6 md:p-12"
+                    className="inline-grid sm:gap-[2px] mb-8 md:mb-24 p-1 sm:p-6 md:p-12"
                     style={{
                         gridTemplateColumns: 'repeat(16, minmax(0, 1fr))',
                     }}

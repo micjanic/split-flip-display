@@ -34,7 +34,7 @@ const FlapStyles = css`
     border-radius: 4px;
     border: 1px solid #000000;
     border-top: 1px solid #666666;
-    border-bottom: 1px solid #000000;
+    border-bottom: 4px solid #000000;
     &::before {
         content: '';
         position: absolute;
@@ -176,7 +176,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-thin md:font-bold text-3xl sm:text-6xl md:text-7xl lg:text-8xl"
+            className="inline-block drop-shadow-xl relative font-mono font-thin md:font-bold text-3xl sm:text-5xl md:text-7xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
