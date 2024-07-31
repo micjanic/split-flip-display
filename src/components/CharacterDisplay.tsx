@@ -176,7 +176,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-thin md:font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+            className="inline-block relative font-mono font-thin md:font-bold text-3xl sm:text-6xl md:text-7xl lg:text-8xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
