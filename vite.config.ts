@@ -12,10 +12,7 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: path.resolve(
-                __dirname,
-                'src/components/splitFlapDisplay.tsx'
-            ),
+            entry: path.resolve(__dirname, 'src/App.tsx'),
             name: '@micjanic/split-flap-display',
             fileName: (format) => `split-flap-display.${format}.js`,
         },
@@ -28,7 +25,7 @@ export default defineConfig({
                 'tailwindcss',
             ],
             output: {
-                assetFileNames: 'assets/[name].[hash][extname]',
+                assetFileNames: '[name].[hash][extname]',
                 globals: {
                     react: 'React',
                     '@pixi/react': 'PIXIReact',
@@ -41,6 +38,8 @@ export default defineConfig({
     },
     plugins: [react()],
     css: {
-        postcss: './postcss.config.js',
+        postcss: {
+            plugins: [tailwindcss()],
+        },
     },
 })
