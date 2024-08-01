@@ -1,7 +1,7 @@
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
-const flipAnimationSpeed: number = 70
+const flipAnimationSpeed: number = 100
 const backgroundColor = css`
     background-image: linear-gradient(#18181a, #3c3d41);
 `
@@ -176,7 +176,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block drop-shadow-xl relative font-mono font-thin md:font-bold text-3xl sm:text-5xl md:text-7xl"
+            className="inline-block relative font-mono font-thin md:font-bold text-3xl sm:text-5xl md:text-7xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}
