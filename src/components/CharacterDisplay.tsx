@@ -168,8 +168,9 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
             timeoutRef.current == null &&
             charList[charListIndex] !== character.toUpperCase()
         ) {
-            const nextCharListIndex = (charListIndex + 1) % charList.length
-            const nextChar = charList[nextCharListIndex]
+            const nextCharListIndex: number =
+                (charListIndex + 1) % charList.length
+            const nextChar: string = charList[nextCharListIndex]
 
             setCurCharacter(nextChar)
 
