@@ -22,9 +22,6 @@
         ".": {
             "import": "./dist/split-flap-display.es.js",
             "require": "./dist/split-flap-display.umd.js"
-        },
-        "./dist/style.css": {
-            "import": "./dist/style.css"
         }
     },
     "browserslist": {

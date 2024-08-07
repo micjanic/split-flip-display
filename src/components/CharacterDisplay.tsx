@@ -60,10 +60,27 @@ const FlapAnimationStyles = css`
     top: 0;
     left: 0;
     transition: all;
+    -webkit-transition: all; /* Safari and Chrome */
+    -moz-transition: all; /* Firefox */
+    -o-transition: all; /* Opera */
+    -ms-transition: all;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards; /* Safari and Chrome */
+    -moz-animation-fill-mode: forwards; /* Firefox */
+    -o-animation-fill-mode: forwards; /* Opera */
+    -ms-animation-fill-mode: forwards; /* Internet Explorer */
     animation-timing-function: linear;
+    -webkit-animation-timing-function: linear; /* Safari and Chrome */
+    -moz-animation-timing-function: linear; /* Firefox */
+    -o-animation-timing-function: linear; /* Opera */
+    -ms-animation-timing-function: linear; /* Internet Explorer */
     animation-duration: ${flipAnimationSpeed}ms;
+    -webkit-animation-duration: ${flipAnimationSpeed}ms; /* Safari and Chrome */
+    -moz-animation-duration: ${flipAnimationSpeed}ms; /* Firefox */
+    -o-animation-duration: ${flipAnimationSpeed}ms; /* Opera */
+    -ms-animation-duration: ${flipAnimationSpeed}ms; /* Internet Explorer */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     display: flex;
@@ -176,7 +193,7 @@ const CharacterDisplay: FC<CharacterDisplayProps> = ({ character = ' ' }) => {
 
     return (
         <div
-            className="inline-block relative font-mono font-thin md:font-bold text-3xl sm:text-5xl md:text-7xl"
+            className="inline-block relative font-mono font-thin md:font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl"
             style={{ perspective: '500px' }}
         >
             {curCharacter !== prevCharacter && flapCharacter}

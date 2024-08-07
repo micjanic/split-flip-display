@@ -2,7 +2,6 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from 'tailwindcss'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
     server: {
@@ -26,7 +25,6 @@ export default defineConfig({
                 'tailwindcss',
             ],
             output: {
-                assetFileNames: '[name].[hash][extname]',
                 globals: {
                     react: 'React',
                     '@pixi/react': 'PIXIReact',
@@ -37,7 +35,7 @@ export default defineConfig({
         outDir: 'dist',
         sourcemap: true,
     },
-    plugins: [react(), cssInjectedByJsPlugin()],
+    plugins: [react()],
     css: {
         postcss: {
             plugins: [tailwindcss()],

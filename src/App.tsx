@@ -1,4 +1,4 @@
 import SplitFlapDisplay from './components/SplitFlapDisplay'
-import './index.css'
+import './style.css'
 
 export default SplitFlapDisplay
